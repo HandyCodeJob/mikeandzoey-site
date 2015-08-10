@@ -2,9 +2,15 @@ from .base import *             # NOQA
 import sys
 import logging.config
 
+print("\x1b[7mRUNNING IN DEV MODE\x1b[0m")
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 TEMPLATE_DEBUG = True
+ALLOWED_HOSTS = (
+    'localhost',
+    '0.0.0.0',
+    )
 
 # Turn off debug while imported by Celery with a workaround
 # See http://stackoverflow.com/a/4806384
@@ -23,6 +29,7 @@ THUMBNAIL_DEBUG = True
 
 # Log everything to the logs directory at the top
 LOGFILE_ROOT = join(dirname(BASE_DIR), 'logs')
+STATIC_ROOT = join(BASE_DIR, '..', 'static')
 
 # Reset logging
 # (see http://www.caktusgroup.com/blog/2015/01/27/Django-Logging-Configuration-logging_config-default-settings-logger/)

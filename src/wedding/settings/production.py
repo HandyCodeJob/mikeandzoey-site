@@ -3,6 +3,8 @@
 from .base import *             # NOQA
 import logging.config
 
+print("\x1b[7mRUNNING IN PRODUCTION MODE\x1b[0m")
+
 # For security and performance reasons, DEBUG is turned off
 DEBUG = False
 TEMPLATE_DEBUG = False
