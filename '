@@ -1,5 +1,8 @@
 from django.shortcuts import render
-from .forms import PersonForm
+import autocomplete_light
+autocomplete_light.autodiscover()
+from .autocomplete_light_register import PersonForm
+
 # Create your views here.
 
 def rsvp(request):

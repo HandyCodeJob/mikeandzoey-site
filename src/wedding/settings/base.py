@@ -61,6 +61,7 @@ SECRET_KEY = env('SECRET_KEY')
 # Application definition
 
 INSTALLED_APPS = (
+    'autocomplete_light',
     'django.contrib.auth',
     'django_admin_bootstrapped',
     'django.contrib.admin',
