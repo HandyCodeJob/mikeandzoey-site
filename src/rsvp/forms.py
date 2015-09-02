@@ -2,6 +2,7 @@ from django.forms import ModelForm
 import autocomplete_light
 from .models import RSVP, Person, Song
 
+
 class RSVPForm(ModelForm):
     class Meta:
         model = RSVP
@@ -20,5 +21,5 @@ class PersonForm(ModelForm):
         autocomplete_fields = ('name',)
         fields = ('name', 'attending', 'food_choice',)
         widgets = {
-                "name": autocomplete_light.TextWidget("PersonAutocomplete"),
+            "name": autocomplete_light.TextWidget("PersonAutocomplete"),
         }

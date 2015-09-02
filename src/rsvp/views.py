@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import PersonForm
 # Create your views here.
 
+
 def rsvp(request):
     context = {}
     if request.method == 'POST':

@@ -32,7 +32,8 @@ LOGFILE_ROOT = join(dirname(BASE_DIR), 'logs')
 STATIC_ROOT = join(BASE_DIR, '..', 'static')
 
 # Reset logging
-# (see http://www.caktusgroup.com/blog/2015/01/27/Django-Logging-Configuration-logging_config-default-settings-logger/)
+# (see http://www.caktusgroup.com/blog/2015/01/27/
+#  Django-Logging-Configuration-logging_config-default-settings-logger/)
 
 LOGGING_CONFIG = None
 LOGGING = {
@@ -40,7 +41,8 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'verbose': {
-            'format': "[%(asctime)s] %(levelname)s [%(pathname)s:%(lineno)s] %(message)s",
+            'format': "[%(asctime)s] %(levelname)s [%(pathname)s:"
+                      "%(lineno)s] %(message)s",
             'datefmt': "%d/%b/%Y %H:%M:%S"
         },
         'simple': {

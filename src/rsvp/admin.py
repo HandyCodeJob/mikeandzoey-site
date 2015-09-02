@@ -1,5 +1,5 @@
+import autocomplete_light_registry  # NOQA
 import autocomplete_light
-from .autocomplete_light_registry import *
 autocomplete_light.autodiscover()
 
 from django.contrib import admin

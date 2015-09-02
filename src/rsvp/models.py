@@ -4,10 +4,11 @@ from django.utils.translation import ugettext as _
 # Create your models here.
 
 FOOD_CHOICES = (
-        ('hamburger', _('Hamburger')),
-        ('chicken', _('Chicken')),
-        ('veggie', _('Veggie Burger')),
-    )
+    ('hamburger', _('Hamburger')),
+    ('chicken', _('Chicken')),
+    ('veggie', _('Veggie Burger')),
+)
+
 
 class RSVP(models.Model):
     family_name = models.CharField(_('Family Name'), max_length=127)
