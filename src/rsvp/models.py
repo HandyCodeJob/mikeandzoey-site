@@ -30,7 +30,7 @@ class Person(models.Model):
     attending = models.BooleanField(_('Attending'), default=False)
     food_choice = models.CharField(_('Choice of Food'), max_length=31,
                                    blank=True, choices=FOOD_CHOICES)
-    group = models.ForeignKey(RSVP)
+    group = models.ForeignKey(RSVP, related_name="family_member")
     last_modified = models.DateField(_("Last Modified"), auto_now=True)
 
     class Meta:

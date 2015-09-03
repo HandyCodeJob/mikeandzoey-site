@@ -1,4 +1,4 @@
-import autocomplete_light_registry  # NOQA
+#from .autocomplete_light_registry import * # NOQA
 import autocomplete_light
 autocomplete_light.autodiscover()
 

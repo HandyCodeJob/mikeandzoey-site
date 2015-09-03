@@ -4,19 +4,44 @@
 {% load crispy_forms_tags %}
 
 {% block title %}{{ block.super }}RSVP{% endblock %}
-
 {% block container %}
+
 <div id="sec2" class="text-page">
   <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
         <h1>{% include "_brandname.html" %}</h1>
         <p class="lead">An Awesome Tagline Goes Here</p>
-        <form method="post" action="">
-    {%crispy form %}
-</form>
+            {% crispy group_form %}
+        <div id="result"></div>
       </div>
     </div>
   </div>
 </div>
+
 {% endblock container %}
+
+{% block scripts %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#id_name').yourlabsAutocomplete({
+        choiceSelector: '[data-value]',
+        url: '/autocomplete/PersonAutocomplete/',
+    }).input.bind('selectChoice', function(e, choice, autocomplete) {
+        $.ajax({
+            url : 'person/' + choice.html(),
+            type : 'GET',
+            data : {
+            },
+            success : function(data) {              
+                $('#result').empty().append( data );
+            },
+            error : function(request, error)
+            {
+                $('#result').empty().append(JSON.stringify(request));
+            }
+        });
+    });
+});
+</script>
+{% endblock scripts %}

@@ -7,16 +7,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 import profiles.urls
 import accounts.urls
-from rsvp.views import rsvp
+import rsvp.urls
 from . import views
 
 
 urlpatterns = [
     url(r'^$', views.HomePage.as_view(), name='home'),
-    url(r'^rsvp/$', rsvp, name='rsvp'),
     url(r'^about/$', views.AboutPage.as_view(), name='about'),
     url(r'^autocomplete/', include('autocomplete_light.urls')),
     url(r'^users/', include(profiles.urls, namespace='profiles')),
+    url(r'^rsvp/', include(rsvp.urls, namespace='rsvp')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include(accounts.urls, namespace='accounts')),
     url(r'^static/(?P<path>.*)$',
