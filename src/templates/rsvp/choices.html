@@ -1,4 +1,12 @@
 {% load crispy_forms_tags %}
+<style>
+    form.form-inline > div:nth-child(4) > label:nth-child(1) {display: none}
+    form.form-inline > div:nth-child(4) > div:nth-child(2) > label:nth-child(1) {display: none}
+</style>
+{% if plus_one %}You are alloted {{plus_one}} additional guest{{plus_one|pluralize}}.{% endif %}
+<br>
+<br>
+
 {% for form in forms %}
     {% crispy form %}
 {% endfor %}

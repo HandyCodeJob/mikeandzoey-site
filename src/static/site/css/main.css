@@ -4,6 +4,11 @@ html, body{
     height:100%;		/* For full height images */
 }
 
+
+.form-group {
+    margin: 5px 5px 10px 5px;
+}
+
 .starter-template {
   padding: 40px 15px;
   text-align: center;

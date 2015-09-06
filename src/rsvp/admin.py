@@ -18,7 +18,7 @@ class PersonInline(admin.StackedInline):
 class PersonAdmin(admin.ModelAdmin):
     model = Person
     form = PersonForm
-    list_display = ('name', 'attending', 'group',)
+    list_display = ('name', 'food_choice', 'group',)
 
 
 class RSVPAdmin(VersionAdmin):

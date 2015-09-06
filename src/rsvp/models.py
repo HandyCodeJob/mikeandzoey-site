@@ -4,6 +4,7 @@ from django.utils.translation import ugettext as _
 # Create your models here.
 
 FOOD_CHOICES = (
+    ('not_attending', _('Not Attending')),
     ('hamburger', _('Hamburger')),
     ('chicken', _('Chicken')),
     ('veggie', _('Veggie Burger')),
@@ -12,6 +13,8 @@ FOOD_CHOICES = (
 
 class RSVP(models.Model):
     family_name = models.CharField(_('Family Name'), max_length=127)
+    additonal_allowed = models.IntegerField(_("Number of 'plus ones' allowed"),
+                                            default=0)
     email = models.EmailField(_('Email'), blank=True)
 
     class Meta:
@@ -27,7 +30,6 @@ class RSVP(models.Model):
 
 class Person(models.Model):
     name = models.CharField(_('Name'), max_length=128)
-    attending = models.BooleanField(_('Attending'), default=False)
     food_choice = models.CharField(_('Choice of Food'), max_length=31,
                                    blank=True, choices=FOOD_CHOICES)
     group = models.ForeignKey(RSVP, related_name="family_member")

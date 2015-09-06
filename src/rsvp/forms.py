@@ -3,11 +3,19 @@ import autocomplete_light
 from .models import RSVP, Person, Song
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.bootstrap import InlineField
-from crispy_forms.layout import Layout, Submit
+from crispy_forms.bootstrap import InlineField, InlineRadios
+from crispy_forms.layout import Layout, Button
 
 class GroupForm(forms.Form):
     name = forms.CharField()
+
+    def __init__(self, *args, **kwargs):
+        super(GroupForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            InlineField('name'),
+            Button('set', 'Set'),
+        )
 
     class Meta:
         widgets = {
@@ -34,11 +42,17 @@ class PersonForm(forms.ModelForm):
         self.helper.form_class = 'form-inline'
         self.helper.layout = Layout(
             InlineField('name', readonly=True),
-            'food_choice',
-            'attending',
-            Submit('submit', 'Set'),
+            InlineField('food_choice'),
         )
 
     class Meta:
         model = Person
-        fields = ('name', 'attending', 'food_choice',)
+        fields = ('name', 'food_choice',)
+
+class AdditionalPersonForm(PersonForm):
+    def __init__(self, *args, **kwargs):
+        super(AdditionalPersonForm, self).__init__(*args, **kwargs)
+        self.helper.layout = Layout(
+            InlineField('name'),
+            InlineField('food_choice'),
+        )
