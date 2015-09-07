@@ -67,5 +67,5 @@ class Event(models.Model):
         ordering = ('date',)
 
     def get_absolute_url(self):
-        return "/#%s" % self.id
+        return "/#%s" % self.slug
 

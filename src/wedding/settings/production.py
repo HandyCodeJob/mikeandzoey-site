@@ -26,6 +26,10 @@ TEMPLATES[0].update({"APP_DIRS": False})
 # Define STATIC_ROOT for the collectstatic command
 STATIC_ROOT = join(BASE_DIR, '..', 'site', 'static')
 
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 # Log everything to the logs directory at the top
 LOGFILE_ROOT = join(dirname(BASE_DIR), 'logs')
 
