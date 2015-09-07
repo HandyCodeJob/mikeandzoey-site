@@ -24,7 +24,7 @@
         <div class="col-md-8 col-md-offset-2 text-center">
           <h1>{% include "_brandname.html" %}</h1>
         </div>
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2 col-sm-10">
           <ul class="events">
             {% for event in events %}
             <li class="event">
@@ -33,7 +33,7 @@
                 <b class="event-person" title=""> </b>
               </h2>
               <div class="event-photo text-center">
-                <img src="{{ event.picture.url }}" alt="{{ event.title }}">
+                <img class="img-responsive event-img" src="{{ event.picture.url }}" alt="{{ event.title }}">
               </div>
                <div class="event-desc">
                 <p class="event-text">
