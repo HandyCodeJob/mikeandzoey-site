@@ -4,6 +4,11 @@
 {% load crispy_forms_tags %}
 
 {% block title %}{{ block.super }}RSVP{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="rsvp" %}
+{% endblock %}
+
 {% block container %}
 
 <div id="sec2" class="text-page">

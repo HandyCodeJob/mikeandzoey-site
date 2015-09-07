@@ -1,6 +1,7 @@
 from django import forms
+from django.utils.text import slugify
 import autocomplete_light
-from .models import RSVP, Person, Song
+from .models import RSVP, Person, Song, Event
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.bootstrap import InlineField, InlineRadios
@@ -56,3 +57,24 @@ class AdditionalPersonForm(PersonForm):
             InlineField('name'),
             InlineField('food_choice'),
         )
+
+
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        fields = (
+            'title',
+            'text',
+            'date',
+            'picture',
+        )
+
+    def save(self, commit=True, *args, **kwargs):
+        if self.instance.pk:
+            instance = super(EventForm, self).save(commit=commit, *args, **kwargs)
+        else:
+            instance = super(EventForm, self).save(commit=False, *args, **kwargs)
+            instance.slug = slugify(instance.title)
+        if commit:
+            instance.save(commit, *args, **kwargs)
+        return instance

@@ -53,3 +53,19 @@ class Song(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Event(models.Model):
+    title = models.CharField(_('Event Title'), max_length=128)
+    text = models.TextField(_('Event Description'))
+    date = models.DateField(_('Event Date'))
+    picture = models.ImageField(_('Event Picture'))
+    slug = models.SlugField(unique=True)
+
+    class Meta:
+        verbose_name_plural = _('Events')
+        ordering = ('date',)
+
+    def get_absolute_url(self):
+        return "/#%s" % self.id
+
