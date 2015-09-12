@@ -1,0 +1,10 @@
+#!/home/fsmimp/repos/mikeandzoey-site/.hitch/virtualenv/bin/python3
+# EASY-INSTALL-ENTRY-SCRIPT: 'pykwalify==1.4.1','console_scripts','pykwalify'
+__requires__ = 'pykwalify==1.4.1'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('pykwalify==1.4.1', 'console_scripts', 'pykwalify')()
+    )
