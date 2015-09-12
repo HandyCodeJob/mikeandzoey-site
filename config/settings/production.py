@@ -160,10 +160,10 @@ LOGGING = {
         },
     },
     'handlers': {
-        'sentry': {
-            'level': 'ERROR',
-            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
-        },
+        #'sentry': {
+        #    'level': 'ERROR',
+        #    'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
+        #},
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
@@ -181,22 +181,22 @@ LOGGING = {
             'handlers': ['console'],
             'propagate': False,
         },
-        'sentry.errors': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'propagate': False,
-        },
+        #'sentry.errors': {
+            #'level': 'DEBUG',
+            #'handlers': ['console'],
+            #'propagate': False,
+        #},
         'django.security.DisallowedHost': {
             'level': 'ERROR',
-            'handlers': ['console', 'sentry'],
+            'handlers': ['console'],
             'propagate': False,
         },
     },
 }
-SENTRY_CELERY_LOGLEVEL = env.int('DJANGO_SENTRY_LOG_LEVEL', logging.INFO)
-RAVEN_CONFIG = {
-    'CELERY_LOGLEVEL': env.int('DJANGO_SENTRY_LOG_LEVEL', logging.INFO),
-    'DSN': SENTRY_DSN
-}
+#SENTRY_CELERY_LOGLEVEL = env.int('DJANGO_SENTRY_LOG_LEVEL', logging.INFO)
+#RAVEN_CONFIG = {
+#    'CELERY_LOGLEVEL': env.int('DJANGO_SENTRY_LOG_LEVEL', logging.INFO),
+#    'DSN': SENTRY_DSN
+#}
 
 # Your production stuff: Below this line define 3rd party library settings
