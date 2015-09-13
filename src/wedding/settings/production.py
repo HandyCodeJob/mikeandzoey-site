@@ -28,8 +28,10 @@ STATIC_ROOT = join(BASE_DIR, '..', 'site', 'static')
 
 # Static files in s3
 # https://github.com/pydanny/cookiecutter-django/blob/1.7.7/%7B%7Bcookiecutter.repo_name%7D%7D/config/settings/production.py
-import environ
 from boto.s3.connection import OrdinaryCallingFormat
+from django.utils import six
+import environ
+
 
 env = environ.Env()
 
