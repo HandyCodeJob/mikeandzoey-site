@@ -37,6 +37,7 @@ AWS_SECRET_ACCESS_KEY = env('DJANGO_AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = env('DJANGO_AWS_STORAGE_BUCKET_NAME')
 AWS_S3_CALLING_FORMAT = 'boto.s3.connection.OrdinaryCallingFormat'
 AWS_LOCATION = 'us-west-2'
+AWS_S3_HOST = 'us-west-2.s3.amazonaws.com'
 
 STATIC_URL = 'https://mikeandzoey.com.s3.amazonaws.com/static/'
 
