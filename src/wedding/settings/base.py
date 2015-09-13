@@ -123,7 +123,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-ALLOWED_HOSTS = ['mikeandzoey-site.herokuapp.com']
+ALLOWED_HOSTS = [
+    'mikeandzoey-site.herokuapp.com',
+    '127.0.0.1',
+    '0.0.0.0',
+]
 
 # Crispy Form Theme - Bootstrap 3
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
