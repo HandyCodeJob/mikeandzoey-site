@@ -28,11 +28,8 @@ STATIC_ROOT = join(BASE_DIR, '..', 'site', 'static')
 
 # Static files in s3
 # https://github.com/pydanny/cookiecutter-django/blob/1.7.7/%7B%7Bcookiecutter.repo_name%7D%7D/config/settings/production.py
-from boto.s3.connection import OrdinaryCallingFormat
 from django.utils import six
 import environ
-
-
 env = environ.Env()
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
@@ -40,10 +37,6 @@ STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_ACCESS_KEY_ID = env('DJANGO_AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('DJANGO_AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = env('DJANGO_AWS_STORAGE_BUCKET_NAME')
-AWS_S3_LOCATION = 'us-west-2'
-AWS_S3_HOST = 's3-us-west-2.amazonaws.com'
-AWS_QUERYSTRING_AUTH = False
-AWS_S3_CALLING_FORMAT = OrdinaryCallingFormat()
 
 # AWS cache settings, don't change unless you know what you're doing:
 AWS_EXPIRY = 60 * 60 * 24 * 7
@@ -59,14 +52,6 @@ AWS_HEADERS = {
 # URL that handles the media served from MEDIA_ROOT, used for managing
 # stored files.
 MEDIA_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
-
-
-
-# see http://developer.yahoo.com/performance/rules.html#expires
-AWS_HEADERS = {
-    'Expires': 'Thu, 15 Apr 2010 20:00:00 GMT',
-    'Cache-Control': 'max-age=86400',
-}
 
 # Log everything to the logs directory at the top
 LOGFILE_ROOT = join(dirname(BASE_DIR), 'logs')
