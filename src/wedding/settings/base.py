@@ -74,6 +74,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'easy_thumbnails',
     'reversion',
+    'storages',
 
     'profiles',
     'accounts',
