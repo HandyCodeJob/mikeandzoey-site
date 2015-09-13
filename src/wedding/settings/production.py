@@ -36,9 +36,24 @@ AWS_ACCESS_KEY_ID = env('DJANGO_AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = env('DJANGO_AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = env('DJANGO_AWS_STORAGE_BUCKET_NAME')
 BOTO_S3_BUCKET = env('DJANGO_AWS_STORAGE_BUCKET_NAME')
-AWS_S3_CALLING_FORMAT = 'boto.s3.connection.OrdinaryCallingFormat'
 
-STATIC_URL = 'https://mikeandzoey.com.s3.amazonaws.com/static/'
+STATIC_URL = 'https://s3.amazonaws.com/www.mikeandzoey.com/'
+
+CORS_ORIGIN_REGEX_WHITELIST = (
+    '^https://www\.mikeandzoey\.com\.s3\.amazonaws\.com.*',
+)
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_HEADERS = (
+    'Access-Control-Allow-Credentials',
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'x-csrftoken'
+)
 
 # see http://developer.yahoo.com/performance/rules.html#expires
 AWS_HEADERS = {
