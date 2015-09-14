@@ -24,6 +24,11 @@ Install all dependencies:
 
     pip install -r requirements.txt
 
+Compile css
+
+    gem install sass
+    sass templates/sass/site.scss:static/site/css/site.css
+
 Run migrations:
 
     python manage.py migrate
@@ -31,6 +36,5 @@ Run migrations:
 ### Detailed instructions
 
 Take a look at the docs for more information.
-
 [0]: https://www.python.org/
 [1]: https://www.djangoproject.com/
