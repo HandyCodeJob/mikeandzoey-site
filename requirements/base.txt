@@ -7,7 +7,7 @@ django-autocomplete-light==2.2.5
 django-reversion==1.9.1
 django-authtools>=1.2.0
 django-compressor>=1.5
-djagno-appconf>=0.4
+django-appconf>=1.0
 easy-thumbnails>=2.2
 Pillow>=2.9.0
 argparse>=1.2.1
