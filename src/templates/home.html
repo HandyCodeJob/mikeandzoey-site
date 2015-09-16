@@ -26,10 +26,14 @@
         </div>
         <div class="col-md-8 col-md-offset-2 col-sm-10">
           <ul class="events">
+            <div class="text-center">
+              <a class="btn btn-primary" href="{% url 'rsvp:rsvp' %}" role="button">RSVP for our Wedding!</a>
+            </div>
             {% for event in events %}
             <li class="event">
               <h2 id="{{ event.slug }}"class="event-header">
                 <span class="event-title">{{ event.title }}</span>
+                <hr class="event-title-hr">
                 <b class="event-person" title=""> </b>
               </h2>
               <div class="event-photo text-center">
@@ -44,7 +48,6 @@
               </div>
             </li>
             {% endfor %}
-            <a class="btn btn-primary" href="{% url 'rsvp:rsvp' %}" role="button">RSVP for our Wedding!</a>
           </ul>
         </div>
       </div>

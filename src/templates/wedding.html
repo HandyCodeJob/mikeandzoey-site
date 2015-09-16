@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Wedding Details{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="wedding" %}
+{% endblock %}
+
+<!-- Benefits of the Django application -->
+{% block container %}
+
+<div id="sec2" class="text-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+          <iframe width="600" height="450" frameborder="0" style="border:0"
+            src="https://www.google.com/maps/embed/v1/view?zoom=12&center=41.3580%2C-93.5574&key=AIzaSyAvxR7c7a2WpIOL69MZp-nelFD_6a872ho" 
+            allowfullscreen>
+          </iframe> 
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock container %}

@@ -14,6 +14,8 @@ from . import views
 urlpatterns = [
     url(r'^$', views.HomePage.as_view(), name='home'),
     url(r'^about/$', views.AboutPage.as_view(), name='about'),
+    url(r'^wedding/$', views.WeddingPage.as_view(), name='wedding'),
+    url(r'^logistics/$', views.LogisticsPage.as_view(), name='logistics'),
     url(r'^autocomplete/', include('autocomplete_light.urls')),
     url(r'^users/', include(profiles.urls, namespace='profiles')),
     url(r'^rsvp/', include(rsvp.urls, namespace='rsvp')),

@@ -1,0 +1,64 @@
+@import "../../static/bourbon/bourbon";
+@import "../../static/bower_components/material-color/material-color";
+
+.events {
+    .btn {
+        background: $clr-red;
+        border-color: $clr-red-300; 
+        margin-bottom: 2em;
+    }
+    list-style: outside none none;
+    margin: 0 auto;
+    max-width: 48em;
+    padding: 6em 0 3em;
+    position: relative;
+    &:before {
+        background: #f2c63d none repeat scroll 0 0;
+        content: "";
+        height: 100%;
+        left: 50%;
+        margin-left: -0.25em;
+        position: absolute;
+        top: 0;
+        width: 0.5em;
+        z-index: -1;
+    }
+    .event {
+        box-shadow: 0.1em 0.1em 1em black;
+        background: $clr-purple;
+        margin-bottom: 2em;
+        padding: 1em 1em 1em 1em; 
+        .event-header {
+            color: $clr-grey;
+            margin-top: 0px;
+            box-shadow: 0px 0px 15px 0px #9C27B0;
+            padding: 10px 5px 10px 5px; 
+            .event-title-hr {
+                background: $clr-red;
+                margin: 0.5em 4em 0em 0em;
+            }
+            .event-title-hr {
+            }
+            .event-person {
+            }
+        }
+        .event-photo {
+            padding: 10px 5px 10px 5px; 
+            .event-img {
+                display: inline;
+            }
+        }
+        .event-desc {
+            color: $clr-grey;
+            margin-top: 10px;
+            margin-bottom: 5px !important;
+            padding: 10px 10px 10px 10px; 
+            .event-text {
+            }
+            .event-date-hr {
+            }
+            .event-date {
+            }
+        }
+    }
+}

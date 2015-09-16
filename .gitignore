@@ -60,3 +60,4 @@ Desktop.ini
 ./site/
 static/
 media/
+.sass-cache/
