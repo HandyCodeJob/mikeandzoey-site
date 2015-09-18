@@ -11,6 +11,12 @@ FOOD_CHOICES = (
     ('veggie', _('Veggie Burger')),
 )
 
+LOGISTICS_CHOICES = (
+    ('travel', _('Travel')),
+    ('hotel', _('Hotel')),
+    ('outing', _('Outing')),
+)
+
 
 class RSVP(models.Model):
     family_name = models.CharField(_('Family Name'), max_length=127)
@@ -96,3 +102,19 @@ class WeddingEvent(models.Model):
     def get_absolute_url(self):
         return "/#%s" % self.slug
 
+class Logistics(models.Model):
+    title = models.CharField(_('Heading'), max_length=128)
+    section = models.CharField(_('Logistics type'),
+                               choices=LOGISTICS_CHOICES,
+                               max_length=32)
+    description = models.TextField(_('Body of option'), blank=True)
+    name = models.CharField(_('Name of the location'),
+                            blank=True, null=True,
+                            max_length=128)
+    website = models.URLField(_("The location's website"),
+                              max_length=128,
+                              blank=True, null=True)
+
+    class Meta:
+        verbose_name_plural = _('Logistics')
+        ordering = ('section', 'name',)

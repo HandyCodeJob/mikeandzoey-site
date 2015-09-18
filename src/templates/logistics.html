@@ -16,23 +16,64 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h1>Traveling to Our Wedding</h1>
-        <p>We understand that many of our guests will be traveling from out of
-        state and we hope to provide you with all of the necessary information 
-        to make your travel to Maryland as easy as possible.</p>
-        <h2>BWI</h2>
-        <p>Easton and Saint Michaels are rural towns on Maryland’s Eastern Shore.
-        The best airport to fly into is Baltimore/Washington International (BWI).
-        The drive from BWI to Easton, MD is a little over one hour (60 miles). 
-        In order to get between hotels and the wedding venue a car is necessary.</p>
-        <h2>Shuttle from BWI to Easton</h2>
-        <p>For those of you who are sharing cars, but who may not be arriving at
-        the airport at the same time, there's the BayRunner Shuttle.
-
-        This shuttle leaves every other hour from 8:30am to 8:30pm daily. The 
-        rates are $51 for one person each way or $84 for two people each way. 
-        The shuttle drops you at the Easton Airport where someone can pick you 
-        up or you can take a 5 minute taxi ride to many of the hotels in Easton.</p> 
+        {% autoescape off %}
+        <ul class="accordion-tabs">
+            {% if travels %}
+            <li class="tab-header-and-content">
+                <a href="javascript:void(0)" class="is-active tab-link">Travel</a>
+                <div class="tab-content">
+                    {% for entry in travels %}
+                      {% if entry.name %}
+                        <h2>{{ entry.title }}</h2>
+                        <h3><a class="link" href="{{ entry.website }}">{{ entry.name }}</a></h3>
+                      {% elif entry.website %}
+                        <h2><a class="link" href="{{ entry.website }}">{ entry.title }}</a></h2>
+                      {% else %} 
+                        <h2>{{ entry.title }}</h2>
+                      {% endif %}
+                      <p>{{ entry.description|linebreaks }}</p>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endif %}
+            {% if hotels %}
+            <li class="tab-header-and-content">
+                <a href="javascript:void(0)" class="tab-link">Hotels</a>
+                <div class="tab-content">
+                    {% for entry in hotels %}
+                      {% if entry.name %}
+                        <h2>{{ entry.title }}</h2>
+                        <h3><a class="link" href="{{ entry.website }}">{{ entry.name }}</a></h3>
+                      {% elif entry.website %}
+                        <h2><a class="link" href="{{ entry.website }}">{{ entry.title }}</a></h2>
+                      {% else %} 
+                        <h2>{{ entry.title }}</h2>
+                      {% endif %}
+                      <p>{{ entry.description|linebreaks }}</p>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endif %}
+            {% if outings %}
+            <li class="tab-header-and-content">
+                <a href="javascript:void(0)" class="tab-link">Outings</a>
+                <div class="tab-content">
+                    {% for entry in outings %}
+                      {% if entry.name %}
+                        <h2>{{ entry.title }}</h2>
+                        <h3><a class="link" href="{{ entry.website }}">{{ entry.name }}</a></h3>
+                      {% elif entry.website %}
+                        <h2><a class="link" href="{{ entry.website }}">{ entry.title }}</a></h2>
+                      {% else %} 
+                        <h2>{{ entry.title }}</h2>
+                      {% endif %}
+                      <p>{{ entry.description|linebreaks }}</p>
+                    {% endfor %}
+                </div>
+            </li>
+            {% endif %}
+         </ul>
+         {% endautoescape %}
       </div>
     </div>
   </div>

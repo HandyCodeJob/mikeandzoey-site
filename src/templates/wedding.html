@@ -20,8 +20,8 @@
       <div class="col-md-{% if col_size != 6%}{{ col_size }}{% elif forloop.first %}3 col-md-offset-3{% else %}3{% endif %} day">
           <h2>{{ day|date:"M d, Y" }}</h2>
           {% for event in list %}
-            <span class="time">{{ event.event_start|date:"P" }} - {{ event.event_end|date:"P" }}</span></br>
             <a class="name link"  href="#{{ event.slug }}">{{ event.clean_name }}</a></br>
+            <span class="time">{{ event.event_start|date:"P" }} - {{ event.event_end|date:"P" }}</span></br>
           {% endfor %}
         </div>
       {% endfor %}
@@ -33,7 +33,7 @@
     </div>
     <div class="row flex">
       <div class="col-md-3 col-md-offset-2 event-loc">
-        <a class="list-group-item" href="#"><i class="fa fa-bed fa-fw fa-lg"></i>&nbsp; Stay Here</a>
+        <a class="list-group-item" href="#"><i class="fa fa-home fa-fw fa-lg"></i>&nbsp; Stay Here</a>
       </div>
     </div>
     <div class="row flex">

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 import math
 from collections import OrderedDict
-from rsvp.models import LifeEvent, WeddingEvent
+from rsvp.models import LifeEvent, WeddingEvent, Logistics
 
 # Create your views here.
 
@@ -45,3 +45,14 @@ class WeddingPage(generic.TemplateView):
 
 class LogisticsPage(generic.TemplateView):
     template_name = "logistics.html"
+
+    def get(self, request, *args, **kwargs):
+        travels = Logistics.objects.filter(section='travel')
+        hotels = Logistics.objects.filter(section='hotel')
+        outings = Logistics.objects.filter(section='outing')
+        return render(request, self.template_name, {
+            'travels': travels,
+            'hotels': hotels,
+            'outings': outings,
+        })
+

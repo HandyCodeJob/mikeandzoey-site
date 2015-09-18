@@ -1,9 +1,9 @@
-#from .autocomplete_light_registry import * # NOQA
+# from .autocomplete_light_registry import * # NOQA
 import autocomplete_light
 autocomplete_light.autodiscover()
 
 from django.contrib import admin
-from .models import RSVP, Person, Song, LifeEvent, WeddingEvent
+from .models import RSVP, Person, Song, LifeEvent, WeddingEvent, Logistics
 from .forms import PersonForm, LifeEventForm, WeddingEventForm
 from reversion import VersionAdmin
 
@@ -37,8 +37,13 @@ class WeddingEventAdmin(admin.ModelAdmin):
     list_display = ('title', 'event_start',)
 
 
+class LogisticsAdmin(admin.ModelAdmin):
+    model = Logistics
+    list_display = ('title', 'section',)
+
 admin.site.register(RSVP, RSVPAdmin)
 admin.site.register(Person, PersonAdmin)
 admin.site.register(LifeEvent, LifeEventAdmin)
 admin.site.register(WeddingEvent, WeddingEventAdmin)
+admin.site.register(Logistics, LogisticsAdmin)
 admin.site.register(Song)
