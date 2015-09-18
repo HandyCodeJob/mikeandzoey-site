@@ -14,15 +14,42 @@
 
 <div id="sec2" class="text-page">
   <div class="container">
-    <div class="row">
+    <div class="row calendar">
       {% for day, list in days.items %}
-        <div class="col-md-{{ col_size }} text-center">
+      {# Use offset if their are only 2 days. We have to only allow the first to have the offset #}
+      <div class="col-md-{% if col_size != 6%}{{ col_size }}{% elif forloop.first %}3 col-md-offset-3{% else %}3{% endif %} day">
           <h2>{{ day|date:"M d, Y" }}</h2>
           {% for event in list %}
-            <p>{{ event.title }} : {{ event.event_start|date:"P" }} - {{ event.event_end|date:"P" }}</p><br>
+            <span class="time">{{ event.event_start|date:"P" }} - {{ event.event_end|date:"P" }}</span></br>
+            <a class="name link"  href="#{{ event.slug }}">{{ event.clean_name }}</a></br>
           {% endfor %}
         </div>
       {% endfor %}
+    </div>
+    <div class="row flex">
+      <div class="col-md-3 col-md-offset-2 event-loc">
+        <a class="list-group-item" href="#"><i class="fa fa-plane fa-fw fa-lg"></i>&nbsp; Get Here</a>
+      </div>
+    </div>
+    <div class="row flex">
+      <div class="col-md-3 col-md-offset-2 event-loc">
+        <a class="list-group-item" href="#"><i class="fa fa-bed fa-fw fa-lg"></i>&nbsp; Stay Here</a>
+      </div>
+    </div>
+    <div class="row flex">
+      <div class="col-md-6 col-md-offset-2 event-loc">
+        {% for event in events %}
+          {% autoescape off %}
+          <h3 id="{{ event.slug }}">{{ event.title }}</h3>
+          <p>{{ event.event_note|linebreaks }}</p>
+          <a class="link" href="{{ event.location_website }}"><strong>{{ event.location_name }}</strong></a>
+          </br>
+          <a class="link" href="{{ event.location_map }}">{{ event.location_addr|linebreaks }}</a>
+          <p>{{ event.event_description|linebreaks }}</p>
+          {% endautoescape %}
+          </br>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>

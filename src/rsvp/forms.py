@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.text import slugify
 import autocomplete_light
+from timezone_field import TimeZoneFormField
 from .models import RSVP, Person, Song, LifeEvent, WeddingEvent
 
 from crispy_forms.helper import FormHelper
@@ -71,7 +72,7 @@ class LifeEventForm(forms.ModelForm):
 
     def save(self, commit=True, *args, **kwargs):
         if self.instance.pk:
-            instance = super(LifeEventForm, self).save(commit=commit, *args, **kwargs)
+            instance = super(LifeEventForm, self).save(commit=False, *args, **kwargs)
         else:
             instance = super(LifeEventForm, self).save(commit=False, *args, **kwargs)
             instance.slug = slugify(instance.title)
@@ -88,11 +89,13 @@ class WeddingEventForm(forms.ModelForm):
         )
 
     def save(self, commit=True, *args, **kwargs):
-        if self.instance.pk:
-            instance = super(WeddingEventForm, self).save(commit=commit, *args, **kwargs)
-        else:
+        if self.instance.pk:  # Model newly created
+            instance = super(WeddingEventForm, self).save(commit=False, *args, **kwargs)
+        else:  # Model updated
             instance = super(WeddingEventForm, self).save(commit=False, *args, **kwargs)
             instance.slug = slugify(instance.title)
+            instance.event_start.replace(tzinfo=instance.event_tz)
+            instance.event_end.replace(tzinfo=instance.event_tz)
         if commit:
             instance.save(commit, *args, **kwargs)
         return instance

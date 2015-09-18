@@ -62,3 +62,53 @@
         }
     }
 }
+
+.calendar {
+    display: flex;
+    font-size: 1.25em;
+
+    .day {
+        border: .1em $clr-grey solid;
+        padding-bottom: 1em;
+        margin-right: .25em;
+
+        h2 {
+            text-align: right;
+            margin: .5em;
+        }
+        
+        .time {
+            font-weight: bold;
+        }
+        
+        .name {
+            padding-left: .5em;
+        }
+
+    }
+
+}
+
+.event-loc {
+    margin-top: 1em;
+    font-size: 1.25em;
+}
+
+.list-group-item {
+    background: $clr-red;
+}
+
+.list-group-item:hover {
+    background: $clr-red-300 !important;
+}
+
+.list-group-item:focus{
+    background: $clr-red-300 !important;
+}
+
+.link:link {
+    color: $clr-purple-700;
+}
+.link:visited, .link:hover, .link:active {
+    color: $clr-purple-700;
+}

@@ -77,15 +77,16 @@ class WeddingEvent(models.Model):
     clean_name = models.CharField(_('Short name for links'), max_length=128)
     event_start = models.DateTimeField(_('Event Start Time'))
     event_end = models.DateTimeField(_('Event End Time'), null=True)
-    event_tz = TimeZoneField(verbose_name=_('Timezone of event'))
+    event_tz = TimeZoneField(verbose_name=_('Timezone of event'),
+                             default='US/Central')
     event_note = models.TextField(_('Event Note'), blank=True)
-    event_discription = models.TextField(_('Event Description'))
+    event_description = models.TextField(_('Event Description'))
     location_name = models.CharField(_('Event Location'), max_length=128)
     location_addr = models.TextField(_('Event address formated'), max_length=256)
     location_map = models.URLField(_('Event location map url'), max_length=512)
     location_website = models.URLField(_("Event location's website"),
                                        max_length=128,
-                                       null=True)
+                                       blank=True, null=True)
     slug = models.SlugField(unique=True)
 
     class Meta:
