@@ -75,6 +75,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',
     'reversion',
     'storages',
+    'timezone_field',
 
     'profiles',
     'accounts',

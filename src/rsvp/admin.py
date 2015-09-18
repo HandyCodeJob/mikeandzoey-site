@@ -3,8 +3,8 @@ import autocomplete_light
 autocomplete_light.autodiscover()
 
 from django.contrib import admin
-from .models import RSVP, Person, Song, Event
-from .forms import PersonForm, EventForm
+from .models import RSVP, Person, Song, LifeEvent, WeddingEvent
+from .forms import PersonForm, LifeEventForm, WeddingEventForm
 from reversion import VersionAdmin
 
 
@@ -25,13 +25,20 @@ class RSVPAdmin(VersionAdmin):
     inlines = (PersonInline,)
 
 
-class EventAdmin(admin.ModelAdmin):
-    model = Event
-    form = EventForm
+class LifeEventAdmin(admin.ModelAdmin):
+    model = LifeEvent
+    form = LifeEventForm
     list_display = ('title', 'date',)
+
+
+class WeddingEventAdmin(admin.ModelAdmin):
+    model = WeddingEvent
+    form = WeddingEventForm
+    list_display = ('title', 'event_start',)
 
 
 admin.site.register(RSVP, RSVPAdmin)
 admin.site.register(Person, PersonAdmin)
-admin.site.register(Event, EventAdmin)
+admin.site.register(LifeEvent, LifeEventAdmin)
+admin.site.register(WeddingEvent, WeddingEventAdmin)
 admin.site.register(Song)
