@@ -29,10 +29,13 @@ class RSVP(models.Model):
         verbose_name_plural = _('RSVP\'s')
 
     def __str__(self):
-        return self.family_name
-
-    def get_absolute_url(self):
-        return "/rsvp/%i/" % self.id
+        string = self.family_name
+        if self.family_member.count() > 1:
+            people = [person.name
+                      for person
+                      in self.family_member.exclude(name=self.family_name)]
+            string += " & " + str(people)
+        return string
 
 
 class Person(models.Model):

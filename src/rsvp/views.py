@@ -51,6 +51,7 @@ def rsvp(request):
         context['group_form'] = group
         return render(request, 'rsvp/rsvp.html', context)
 
+
 def person_autocomplete(request,
     template_name='autocomplete_light/model_template/choice.html'):
     q = request.GET.get('q', '')
