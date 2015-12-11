@@ -125,6 +125,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 ALLOWED_HOSTS = [
+    'mikeandzoey.com',
+    'www.mikeandzoey.com',
     'mikeandzoey-site.herokuapp.com',
     '127.0.0.1',
     '0.0.0.0',
