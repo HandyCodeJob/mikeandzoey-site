@@ -2,6 +2,12 @@
 @import "../../static/bower_components/neat/app/assets/stylesheets/neat";
 @import "../../static/bower_components/material-color/material-color";
 
+.requiredField {
+}
+
+.input-group-btn {
+    padding: 0 10px
+}
 .events {
     .btn {
         background: $clr-red;

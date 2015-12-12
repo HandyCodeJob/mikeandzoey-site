@@ -5,8 +5,9 @@ from timezone_field import TimeZoneFormField
 from .models import RSVP, Person, Song, LifeEvent, WeddingEvent
 
 from crispy_forms.helper import FormHelper
-from crispy_forms.bootstrap import InlineField, InlineRadios
+from crispy_forms.bootstrap import InlineField, InlineRadios, FieldWithButtons
 from crispy_forms.layout import Layout, Button
+
 
 class GroupForm(forms.Form):
     name = forms.CharField()
@@ -34,7 +35,15 @@ class RSVPForm(forms.ModelForm):
 class SongForm(forms.ModelForm):
     class Meta:
         model = Song
-        fields = ('title', 'artist', 'album')
+        fields = ('slug',)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            FieldWithButtons('slug',
+                             Button('set-song', 'Submit'),)
+        )
 
 
 class PersonForm(forms.ModelForm):

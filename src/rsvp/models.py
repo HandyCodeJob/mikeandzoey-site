@@ -35,6 +35,8 @@ class RSVP(models.Model):
                       for person
                       in self.family_member.exclude(name=self.family_name)]
             string += " & " + str(people)
+        if self.additonal_allowed > 0:
+            string += " +%i" % self.additonal_allowed
         return string
 
 
@@ -57,12 +59,10 @@ class Person(models.Model):
 
 
 class Song(models.Model):
-    artist = models.CharField(_('Artist'), max_length=127)
-    title = models.CharField(_('Song Title'), max_length=127)
-    album = models.CharField(_('Album Name'), max_length=127)
+    slug = models.CharField(_('Request a song'), max_length=255, blank=True)
 
     def __str__(self):
-        return self.title
+        return self.slug
 
 
 class LifeEvent(models.Model):

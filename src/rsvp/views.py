@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .forms import PersonForm, GroupForm, AdditionalPersonForm
+from .forms import PersonForm, GroupForm, AdditionalPersonForm, SongForm
 from .models import Person
 # Create your views here.
 
@@ -48,9 +48,17 @@ def rsvp(request):
         return HttpResponse("Done")
     else:
         group = GroupForm()
+        song = SongForm()
         context['group_form'] = group
+        context['song_form'] = song
         return render(request, 'rsvp/rsvp.html', context)
 
+
+def song(request):
+    if request.method == "POST":
+        song = SongForm(data=request.POST)
+        song.save()
+        return HttpResponse("ok")
 
 def person_autocomplete(request,
     template_name='autocomplete_light/model_template/choice.html'):

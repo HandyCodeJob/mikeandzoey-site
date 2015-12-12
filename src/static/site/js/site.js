@@ -41,8 +41,7 @@ $(document).ready(function() {
             success : function(data) {              
                 $('#people-form').empty().append( data );
             },
-            error : function(request, error)
-            {
+            error : function(request, error) {
                 $('#people-form').empty().append(JSON.stringify(request));
             }
         });
@@ -52,11 +51,40 @@ $(document).ready(function() {
            type: "POST",
            url: "",
            data: $('.form-inline').serialize(),
-           success: function(data)
-           {
-               alert(data); 
+           success: function(data) {
+               notif({
+                   msg: "<b>Ok!:</b> Party data has been set.",
+                   type: "success"
+               });
+           },
+           error : function(request, error) {
+               notif({
+                   msg: "<b>Opps!</b> contact Mike for help :/" + error,
+                   type: "error"
+               });
            }
-         });
+        });
+        return false; 
+    });
+    $("#button-id-set-song").click(function(e) { 
+        $.ajax({
+           type: "POST",
+           url: "song/",
+           data: $("#id_slug").serialize(),
+           success: function(data) {
+               notif({
+                   msg: "<b>Thanks!:</b> Feel free to recommend more songs.",
+                   type: "success"
+               }),
+               $("#id_slug").val("")
+           },
+           error : function(request, error) {
+               notif({
+                   msg: "<b>Opps!</b> contact Mike for help :/" + error,
+                   type: "error"
+               });
+            }
+        });
         return false; 
     });
 });
