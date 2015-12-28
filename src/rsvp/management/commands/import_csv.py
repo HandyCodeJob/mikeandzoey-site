@@ -11,7 +11,12 @@ class Command(BaseCommand):
     def make_party(self, line):
         people = line['Name'].split(',')
         family_name = people[0]
-        guests = 1 if len(people) == 1 else 0
+        try:
+            guests = int(line['Additional Guests'])
+        except ValueError:
+            """For those not wesite ppl"""
+            self.stdout.write("Skipping '%s'!" % str(people))
+            return None
         double = RSVP.objects.filter(family_name=family_name).exists()
         if self.allow_double or not double:
             group = RSVP.objects.create(family_name=family_name,
