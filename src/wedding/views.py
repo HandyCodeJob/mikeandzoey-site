@@ -15,8 +15,8 @@ class HomePage(generic.View):
         return render(request, self.template_name, {'events': events})
 
 
-class AboutPage(generic.TemplateView):
-    template_name = "about.html"
+class RegistryPage(generic.TemplateView):
+    template_name = "registry.html"
 
 
 class WeddingPage(generic.TemplateView):

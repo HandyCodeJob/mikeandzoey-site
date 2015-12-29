@@ -13,7 +13,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.HomePage.as_view(), name='home'),
-    url(r'^about/$', views.AboutPage.as_view(), name='about'),
+    url(r'^registry/$', views.RegistryPage.as_view(), name='registry'),
     url(r'^wedding/$', views.WeddingPage.as_view(), name='wedding'),
     url(r'^logistics/$', views.LogisticsPage.as_view(), name='logistics'),
     url(r'^autocomplete/', include('autocomplete_light.urls')),

@@ -57,7 +57,7 @@ Thumbs.db
 Desktop.ini
 
 # Project settings
-./site/
-static/
 media/
+/static/
+bower_components/
 .sass-cache/
