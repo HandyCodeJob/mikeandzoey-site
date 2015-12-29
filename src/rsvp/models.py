@@ -70,12 +70,13 @@ class LifeEvent(models.Model):
     text = models.TextField(_('Event Description'))
     date_text = models.CharField(_('Event Date'), max_length=128)
     date = models.TextField(_('Event real date'), max_length=128)
+    date_real = models.DateField(_('Event date for sorting'))
     picture = models.ImageField(_('Event Picture'), null=True, blank=True)
     slug = models.SlugField(unique=True)
 
     class Meta:
         verbose_name_plural = _('Life Events')
-        ordering = ('-date',)
+        ordering = ('-date_real',)
 
     def get_absolute_url(self):
         return "/#%s" % self.slug

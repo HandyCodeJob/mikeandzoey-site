@@ -36,9 +36,11 @@
                 <hr class="event-title-hr">
                 <b class="event-person" title=""> </b>
               </h2>
+              {% if event.picture %}
               <div class="event-photo text-center">
                 <img class="img-responsive event-img" src="{{ event.picture.url }}" alt="{{ event.title }}">
               </div>
+              {% endif %}
                <div class="event-desc">
                 <p class="event-text">
                   {{ event.text }}  
