@@ -68,8 +68,8 @@ class Song(models.Model):
 class LifeEvent(models.Model):
     title = models.CharField(_('Event Title'), max_length=128)
     text = models.TextField(_('Event Description'))
-    date = models.DateField(_('Event Date'))
-    picture = models.ImageField(_('Event Picture'))
+    date = models.CharField(_('Event Date'), max_length=128)
+    picture = models.ImageField(_('Event Picture'), null=True)
     slug = models.SlugField(unique=True)
 
     class Meta:
@@ -82,7 +82,8 @@ class LifeEvent(models.Model):
 
 class WeddingEvent(models.Model):
     title = models.CharField(_('Event Title'), max_length=128)
-    main_event = models.BooleanField(_('Main Event, ie Ceremony'), default=False)
+    main_event = models.BooleanField(_('Main Event, ie Ceremony'),
+                                     default=False)
     clean_name = models.CharField(_('Short name for links'), max_length=128)
     event_start = models.DateTimeField(_('Event Start Time'))
     event_end = models.DateTimeField(_('Event End Time'), null=True)
@@ -91,7 +92,8 @@ class WeddingEvent(models.Model):
     event_note = models.TextField(_('Event Note'), blank=True)
     event_description = models.TextField(_('Event Description'))
     location_name = models.CharField(_('Event Location'), max_length=128)
-    location_addr = models.TextField(_('Event address formated'), max_length=256)
+    location_addr = models.TextField(_('Event address formated'),
+                                     max_length=256)
     location_map = models.URLField(_('Event location map url'), max_length=512)
     location_website = models.URLField(_("Event location's website"),
                                        max_length=128,
@@ -104,6 +106,7 @@ class WeddingEvent(models.Model):
 
     def get_absolute_url(self):
         return "/#%s" % self.slug
+
 
 class Logistics(models.Model):
     title = models.CharField(_('Heading'), max_length=128)
