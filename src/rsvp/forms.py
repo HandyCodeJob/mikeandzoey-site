@@ -76,6 +76,7 @@ class LifeEventForm(forms.ModelForm):
             'title',
             'text',
             'date',
+            'date_real',
             'picture',
         )
 
