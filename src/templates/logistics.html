@@ -24,7 +24,6 @@
                 <div class="tab-content">
                     {% for entry in travels %}
                       {% if entry.name %}
-                        <h2>{{ entry.title }}</h2>
                         <h3><a class="link" href="{{ entry.website }}">{{ entry.name }}</a></h3>
                       {% elif entry.website %}
                         <h2><a class="link" href="{{ entry.website }}">{ entry.title }}</a></h2>
