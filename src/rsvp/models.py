@@ -68,13 +68,14 @@ class Song(models.Model):
 class LifeEvent(models.Model):
     title = models.CharField(_('Event Title'), max_length=128)
     text = models.TextField(_('Event Description'))
-    date = models.CharField(_('Event Date'), max_length=128)
+    date_text = models.CharField(_('Event Date'), max_length=128)
+    date = models.DateField(_('Event real date'))
     picture = models.ImageField(_('Event Picture'), null=True)
     slug = models.SlugField(unique=True)
 
     class Meta:
         verbose_name_plural = _('Life Events')
-        ordering = ('date',)
+        ordering = ('-date',)
 
     def get_absolute_url(self):
         return "/#%s" % self.slug
