@@ -69,8 +69,8 @@ class LifeEvent(models.Model):
     title = models.CharField(_('Event Title'), max_length=128)
     text = models.TextField(_('Event Description'))
     date_text = models.CharField(_('Event Date'), max_length=128)
-    date = models.DateField(_('Event real date'))
-    picture = models.ImageField(_('Event Picture'), null=True)
+    date = models.TextField(_('Event real date'), max_length=128)
+    picture = models.ImageField(_('Event Picture'), null=True, blank=True)
     slug = models.SlugField(unique=True)
 
     class Meta:

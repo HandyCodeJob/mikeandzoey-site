@@ -14,6 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='lifeevent',
             name='date',
-            field=models.DateField(verbose_name='Event real date'),
+            field=models.TextField(max_length=128, verbose_name='Event real date'),
+        ),
+        migrations.AlterField(
+            model_name='lifeevent',
+            name='picture',
+            field=models.ImageField(upload_to='', verbose_name='Event Picture', null=True, blank=True),
         ),
     ]
