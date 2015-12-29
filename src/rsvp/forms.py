@@ -17,7 +17,7 @@ class GroupForm(forms.Form):
         self.helper = FormHelper()
         self.helper.layout = Layout(
             InlineField('name'),
-            Button('set', 'Set'),
+            Button('set', 'Confirm Reservation'),
         )
 
     class Meta:
