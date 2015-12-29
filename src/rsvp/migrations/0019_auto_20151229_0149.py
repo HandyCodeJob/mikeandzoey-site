@@ -21,9 +21,4 @@ class Migration(migrations.Migration):
             field=models.CharField(verbose_name='Event Date', default='', max_length=128),
             preserve_default=False,
         ),
-        migrations.AlterField(
-            model_name='lifeevent',
-            name='date',
-            field=models.DateField(verbose_name='Event real date'),
-        ),
     ]
