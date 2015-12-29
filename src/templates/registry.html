@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Wedding Registry{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" with active_link="registry" %}
+{% endblock %}
+
+<!-- Benefits of the Django application -->
+{% block container %}
+
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1 style="padding-top: 35px">Wedding Registry</h1>
+        <h3>We are registered at Target and Williams-Sonoma</h3>
+        <div class="row">
+          <a href="http://www.target.com/gift-registry/giftgiver?registryId=cNUVXl24cDZvdLug6Kqa7A&registryType=WEDDING">
+            <img style="padding: 15px" src="{% static 'site/img/williams-sonoma-logo.png' %}">
+          </a>
+        </div>
+        <div class="row">
+          <a href="https://secure.williams-sonoma.com/registry/n5lbfqx7sg/registry-list.html">
+              <img style="padding: 15px" src="{% static 'site/img/Target-Logo.png' %}">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock container %}
