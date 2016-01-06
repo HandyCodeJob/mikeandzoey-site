@@ -67,29 +67,25 @@ $(document).ready(function() {
         return false; 
     });
     $("#button-id-set-song").click(function(e) { 
-        // default is "slug=", we want at least 2 chars for a song
-        if ($("#id_slug").serialize().length < 7) {
-            $("#button-id-set").click()
-        } else {
-          $.ajax({
-            type: "POST",
-            url: "song/",
-            data: $("#id_slug").serialize(),
-            success: function(data) {
-                notif({
-                    msg: "<b>Thanks!:</b> Feel free to recommend more songs.",
-                    type: "success"
-                }),
-                $("#id_slug").val("")
-            },
-            error : function(request, error) {
-                notif({
-                    msg: "<b>Opps!</b> contact Mike for help :/" + error,
-                    type: "error"
-                });
-            }
-          });
+      $("#button-id-set").click() // just incase ppl can't read
+      $.ajax({
+        type: "POST",
+        url: "song/",
+        data: $("#id_slug").serialize(),
+        success: function(data) {
+            notif({
+                msg: "<b>Thanks!:</b> Feel free to recommend more songs.",
+                type: "success"
+            }),
+            $("#id_slug").val("")
+        },
+        error : function(request, error) {
+            notif({
+                msg: "<b>Opps!</b> contact Mike for help :/" + error,
+                type: "error"
+            });
         }
+          });
         return false; 
     });
 });
