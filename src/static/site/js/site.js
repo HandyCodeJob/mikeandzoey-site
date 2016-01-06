@@ -68,7 +68,7 @@ $(document).ready(function() {
     });
     $("#button-id-set-song").click(function(e) { 
         // default is "slug=", we want at least 2 chars for a song
-        if ($("#id_slug").serialize() > 7) {
+        if ($("#id_slug").serialize().length < 7) {
             $("#button-id-set").click()
         } else {
           $.ajax({
