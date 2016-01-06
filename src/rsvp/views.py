@@ -57,8 +57,12 @@ def rsvp(request):
 def song(request):
     if request.method == "POST":
         song = SongForm(data=request.POST)
-        song.save()
-        return HttpResponse("ok")
+        if song.is_valid():
+            song.save()
+            return HttpResponse("ok")
+        else:
+            return HttpResponse("nope")
+
 
 def person_autocomplete(request,
     template_name='autocomplete_light/model_template/choice.html'):
